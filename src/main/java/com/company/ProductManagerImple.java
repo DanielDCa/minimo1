@@ -17,13 +17,13 @@ public class ProductManagerImple implements ProductManager{
     List<Product> productList;
 
     public ProductManagerImple(){
-        //Inicialisar los valores del HashMap
+        //Inicializar los valores del HashMap
         this.users = new HashMap<>();
         users.put("1",new User("Carlos"));
         users.put("2",new User("Sebastian"));
         users.put("3",new User("Federico"));
 
-        //Inicialisar  la cola
+        //Inicializar  la cola
         pendingOrders =new LinkedList<>();
 
         //Inicialisamos la lista de productos
@@ -61,10 +61,6 @@ public class ProductManagerImple implements ProductManager{
         Order o = this.pendingOrders.poll();
         List<Order.LP> lps = o.listProducts();
         for (Order.LP lp: lps ){
-
-            System.out.println(lp.p);
-            System.out.println(lp.q);
-
             Product p = this.getProductByName(lp.p);
             p.updateCantidad(lp.q);
         }
