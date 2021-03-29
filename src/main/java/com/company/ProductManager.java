@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.List;
 
-public interface ProductManager {
+public interface ProductManager {// Hola
     /*
         - Listado de productos ordenado (ascendentemente) por precio
         - Realizar un pedido (que puede estar formado por diferentes productos y en
