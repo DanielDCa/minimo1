@@ -9,6 +9,7 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
 
+
         ProductManager pm = new ProductManagerImple();
         User u = new User("Carlos");
 
@@ -30,21 +31,24 @@ public class Main {
 
         Order o2=new Order();
         o2.setUsuario("1");
-        o.addProduct("Donut",4);
-        o.addProduct("Bocata de jamon", 2);
+        o2.addProduct("Donut",4);
+        o2.addProduct("Bocata de jamon", 2);
         u.addOrder(o2);
         pm.newOrder(o2);
 
 
         pm.proccesOrder();
         //Hemos hecho 2 pedidos y hemos servido uno
-        System.out.println("Pedidos servidos de Carlos");
+        System.out.println("Pedidos ordenados de Carlos");
         List<Order> listaCarlos;
         listaCarlos=u.getOrders();
 
         for(Order order: listaCarlos)
         {
-            System.out.println(order.toString());
+            for (Order.LP lp: order.listProducts()) {
+                System.out.println(lp.getP() + ", Cantidad: " + lp.getQ());
+            }
+
         }
 
 

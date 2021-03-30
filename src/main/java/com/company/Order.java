@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Order {
 
-    private List<LP> orderedProducts;
+    public List<LP> orderedProducts;
     private String usuario;
 
     public Order(){

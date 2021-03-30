@@ -12,7 +12,7 @@ public class ProductManagerImple implements ProductManager{
     FATAL)
 
  */
-    HashMap<String, User> users;
+    public HashMap<String, User> users;
     Queue<Order> pendingOrders;
     List<Product> productList;
 
@@ -51,27 +51,29 @@ public class ProductManagerImple implements ProductManager{
     //Añade un pedido a la lista de pedidos
     @Override
     public void newOrder(Order o) {//Realizar pedido
+
         pendingOrders.add(o);
+        User u = this.getUserById(o.getUsuario());
+        u.addOrder(o);
+
     }
 
-
     @Override
-    public void proccesOrder() {//Servir orden
+    public Order proccesOrder() {//Servir orden
 
-        Order o = this.pendingOrders.poll();
+        Order o = this.pendingOrders.poll();//Poll lo que hace es devolver el objeto y luego elimina de la cola(primer objeto añadido)
         List<Order.LP> lps = o.listProducts();
         for (Order.LP lp: lps ){
             Product p = this.getProductByName(lp.p);
             p.updateCantidad(lp.q);
         }
-        User u = this.getUserByName(o.getUsuario());
-        u.addOrder(o);
 
+        return o;
     }
 
-    private User getUserByName(String usuario) {
+    private User getUserById(String id) {
 
-        return users.get(usuario);
+        return users.get(id);
     }
 
     private Product getProductByName(String p) {
@@ -94,7 +96,7 @@ public class ProductManagerImple implements ProductManager{
     }
 
     @Override
-    public List<Product> getProductBySales() {//Poner un contador
+    public List<Product> getProductBySales() {
         Collections.sort(this.productList, Product.CMP_SOLD);//Llama a la función static CMP_PRICE del producto
         //Arrays.sort();
 

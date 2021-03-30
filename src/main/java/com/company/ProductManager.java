@@ -15,7 +15,7 @@ public interface ProductManager {// Hola
 
     public List<Product> getProductByPrice();
     public void newOrder(Order o);
-    public void proccesOrder();
+    public Order proccesOrder();
     public List<Order> getOrderByUser(String usuario);
     public List<Product> getProductBySales();
 
