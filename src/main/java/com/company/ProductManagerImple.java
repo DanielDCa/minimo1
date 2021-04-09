@@ -12,6 +12,7 @@ public class ProductManagerImple implements ProductManager{
     FATAL)
 
  */
+
     public HashMap<String, User> users;
     Queue<Order> pendingOrders;
     List<Product> productList;

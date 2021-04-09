@@ -17,6 +17,14 @@ public class User {
         orders.add(o);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public List<Order> getOrders() {
         return orders;
     }
