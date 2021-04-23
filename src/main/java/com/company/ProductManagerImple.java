@@ -17,7 +17,9 @@ public class ProductManagerImple implements ProductManager{
     Queue<Order> pendingOrders;
     List<Product> productList;
 
-    public ProductManagerImple(){
+    private static ProductManagerImple singleton;
+
+    private ProductManagerImple(){
         //Inicializar los valores del HashMap
         this.users = new HashMap<>();
         users.put("1",new User("Carlos"));
@@ -29,16 +31,23 @@ public class ProductManagerImple implements ProductManager{
 
         //Inicialisamos la lista de productos
         this.productList = new LinkedList<>();
+        //Añadimos productos a la lista
         Product p1 = new Product("Coca cola",2,20);
         Product p2 = new Product("Donut",8, 20);
         Product p3 = new Product("Bocata de jamon",3 ,30);
-
         this.productList.add(p1);
         this.productList.add(p2);
         this.productList.add(p3);
 
     }
+    //Clase getInstance, que te devuelve la instancia de nuestra clase
+    public static ProductManagerImple getInstance(){
+        if(singleton == null){//Si la instancia no existe, la creamos
+            singleton = new ProductManagerImple();
+        }
 
+        return singleton;
+    }
     //Retorna una lista ordenada de menor a mayor
     @Override
     public List<Product> getProductByPrice() {

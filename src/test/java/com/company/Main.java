@@ -10,7 +10,7 @@ public class Main {
 	// write your code here
 
 
-        ProductManager pm = new ProductManagerImple();
+     /*   ProductManager pm = new ProductManagerImple();
         User u = new User("Carlos");
 
         System.out.println("Productos ordenados por precio");
@@ -58,7 +58,7 @@ public class Main {
         List<Product> listOrderedBySales =pm.getProductBySales();
         for (Product p: listOrderedBySales){
             System.out.println(p.getProduct() + ": " + p.getVendidos());
-        }
+        }*/
 
 
 

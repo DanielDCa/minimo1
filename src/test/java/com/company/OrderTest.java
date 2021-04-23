@@ -9,9 +9,9 @@ import java.util.List;
 
 public class OrderTest {
 
-    //int i = 99;
+    int i = 99;
 
-    ProductManager pm = new ProductManagerImple();
+   // ProductManager pm = new ProductManagerImple();
     Order o= new Order();
     Order o2=new Order();
 
@@ -19,8 +19,8 @@ public class OrderTest {
 
     @Before
     public void setUp(){//Inicializa la estructura de datos
-        //Añadimos 2 ordenes a usuario carlos
 
+        //Añadimos 2 ordenes a usuario carlos
         o.setUsuario("1");
         o.addProduct("Coca cola", 2);
         o.addProduct("Donut", 3);
@@ -29,7 +29,9 @@ public class OrderTest {
         o2.addProduct("Donut",4);
         o2.addProduct("Bocata de jamon", 2);
 
-        //i = 0;
+
+
+        i = 0;
         
     }
     @After
@@ -38,31 +40,39 @@ public class OrderTest {
     }
     @Test
     public void placeOrder(){//Realizar pedido
-        int i=pm.getOrderByUser("1").size();
-        Assert.assertEquals(0,i);//Verificamos que no se haya asociado ningun pedido
+
+        //Verificamos que no se haya asociado ningun pedido (0 pedidos ordenados)
+        i=ProductManagerImple.getInstance().getOrderByUser("1").size();
+        Assert.assertEquals(0,i);
 
         //Realizamos el pedido
-        pm.newOrder(o);
-        pm.newOrder(o2);
-        i=pm.getOrderByUser("1").size();
-        Assert.assertEquals(2,i);//Verificamos sean "2" pedidos
+        ProductManagerImple.getInstance().newOrder(o);
+        ProductManagerImple.getInstance().newOrder(o2);
 
+        //Verificamos que sean "2" pedidos realizados por el usuario 2
+        i = ProductManagerImple.getInstance().getOrderByUser("1").size();
+        Assert.assertEquals(2,i);
 
         //i = 10;
         //Assert.assertEquals(10,i);//Tambien esta el assertNoequals
     }
     @Test
     public void serveOrder(){//Servir un pedido
-        Order order;
-        List<Product> products1= pm.getProductBySales();
+
+
+
+        i = ProductManagerImple.getInstance().getOrderByUser("1").size();
+        System.out.println(i);
+        //Order order;
+        //List<Product> products1= pm.getProductBySales();
 
         //products1
         //Hemos hecho 2 pedidos hemos servido uno
-        pm.newOrder(o);
-        pm.newOrder(o2);
+        //pm.newOrder(o);
+        //pm.newOrder(o2);
 
         //Servimos la primera orden
-        order = pm.proccesOrder();
+        //order = pm.proccesOrder();
 
         //
         //Falta probar algna cosa aqui   Assert.assertEquals(products1,products2);
